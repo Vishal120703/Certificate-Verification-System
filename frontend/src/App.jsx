@@ -1,8 +1,19 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from './pages/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import Dashboard from './pages/Dashboard';
 
 const App = () => {
   return (
-    <div>App</div>
+    <>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
+    </Routes>
+    </BrowserRouter>
+    </>
   )
 }
 
