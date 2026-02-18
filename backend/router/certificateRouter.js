@@ -10,6 +10,4 @@ router.get("/verify/:certificateId",Controller.verifyCertificate);
 router.post("/upload",authenticate,authorizeRoles("admin","super_admin"),upload.single("file"),Controller.uploadExcel);
 router.get("/download/:certificateId",Controller.downloadCertificate);
 
-
-
 module.exports = router;

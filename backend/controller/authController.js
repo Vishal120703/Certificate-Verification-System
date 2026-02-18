@@ -1,6 +1,7 @@
 const User = require("../models/user.model")
 const bcrypt = require("bcrypt");
 const {generateToken} = require("../utility/generateToken")
+const Certificate = require("../models/certificate.model")
 exports.createAdmin = async (req, res) => {
   try {
     const { username, name, email, password } = req.body;
@@ -99,3 +100,22 @@ exports.postLogin = async (req, res) => {
     });
   }
 };
+
+exports.postStudentLogin = async(req,res)=>{
+  try{
+    const {studentEmail} = req.body;
+    if(!studentEmail){
+      return res.status(400).json("Fill All the required fileds");
+    }
+    const user = await Certificate.find({studentEmail});
+    if(!user){
+      return res.status(404).json({msg:"User is not exist"})
+
+    }
+    return res.status(200).json({msg:"Login",user})
+
+  }
+  catch{
+    res.status(500).json({msg:"Something Went Wrong"});
+  }
+}
