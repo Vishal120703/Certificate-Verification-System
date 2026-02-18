@@ -6,8 +6,6 @@ const fs = require("fs");
 const QRCode = require("qrcode");
 const path = require("path")
 
-
-
 exports.createCertificate = async(req,res)=>{
     try{
     const {certificateId,studentName,studentEmail,internshipDomain,startDate,endDate} = req.body;
@@ -142,22 +140,29 @@ exports.downloadCertificate = async (req, res) => {
 
     // Generate PDF
     const pdfBuffer = await page.pdf({
-      format: "A4",
-      printBackground: true
+      width: "29.7cm",
+      height: "21cm",
+      landscape: true,
+      printBackground: true,
+      margin: {
+        top: "0cm",
+        right: "0cm",
+        bottom: "0cm",
+        left: "0cm"
+      }
     });
 
     await browser.close();
 
     // Send PDF
-    res.type("application/pdf");
-res.setHeader(
-  "Content-Disposition",
-  `inline; filename="${certificateId}.pdf"`
-);
-
-return res.send(pdfBuffer);
-
-  } catch (error) {
+    res.writeHead(200, {
+      "Content-Type": "application/pdf",
+      "Content-Disposition": `attachment; filename="${certificateId}.pdf"`,
+      "Content-Length": pdfBuffer.length,
+    });
+    return res.end(pdfBuffer);
+  }
+  catch (error) {
     console.error("PDF Generation Error:", error);
     return res.status(500).json({ message: "Something went wrong" });
   }
