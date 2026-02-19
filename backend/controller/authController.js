@@ -119,3 +119,19 @@ exports.postStudentLogin = async(req,res)=>{
     res.status(500).json({msg:"Something Went Wrong"});
   }
 }
+
+exports.getMe = async (req, res) => {
+  try {
+    return res.status(200).json({
+      user: {
+        id: req.user.id,
+        role: req.user.role
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({
+      msg: "Something went wrong"
+    });
+  }
+};
+

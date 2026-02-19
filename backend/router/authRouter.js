@@ -4,9 +4,9 @@ const authController = require("../controller/authController")
 const {authenticate} = require("../middlewares/auth.middleware")
 const {authorizeRoles} = require("../middlewares/auth.role.middleware")
 
-
+router.get("/me",authenticate,authController.getMe)
 router.post("/create-admin",authenticate,authorizeRoles("super_admin"),authController.createAdmin);
-router.post("/login",authenticate,authorizeRoles("super_admin","admin"),authController.postLogin);
+router.post("/login",authController.postLogin);
 router.post("/certificate",authController.postStudentLogin);
 
 
