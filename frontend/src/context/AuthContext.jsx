@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await API.get("/User/me"); // adjust path if needed
+        const res = await API.get("/me"); // adjust path if needed
         setUser(res.data.user);
       } catch  {
         setUser(null);
