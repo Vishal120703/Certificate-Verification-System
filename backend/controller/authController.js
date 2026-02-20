@@ -100,6 +100,17 @@ exports.postLogin = async (req, res) => {
     });
   }
 };
+exports.getStudentCertificate = async(req,res)=>{
+  try{
+    console.log(req.params)
+    const {email} = req.params;
+    const certificates = await Certificate.find({studentEmail:email});
+    return res.status(200).json({msg:"working",certificates});
+  }
+  catch{
+    res.status(500).json({msg:"something wents wrong"})
+  }
+}
 
 exports.postStudentLogin = async(req,res)=>{
   try{

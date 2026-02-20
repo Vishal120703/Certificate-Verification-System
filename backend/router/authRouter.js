@@ -8,6 +8,7 @@ router.get("/me",authenticate,authController.getMe)
 router.post("/create-admin",authenticate,authorizeRoles("super_admin"),authController.createAdmin);
 router.post("/login",authController.postLogin);
 router.post("/certificate",authController.postStudentLogin);
+router.get("/certificate/:email",authController.getStudentCertificate)
 
 
 module.exports = router;
