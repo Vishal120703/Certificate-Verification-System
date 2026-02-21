@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import API from "../../api/axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import "./Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,39 +22,52 @@ const Login = () => {
 
     try {
       const res = await API.post("/login", form);
-
-      setUser(res.data.user);  // 🔥 VERY IMPORTANT
-
+      setUser(res.data.user);
       navigate("/dashboard");
-
     } catch (error) {
+      alert("Invalid Credentials");
       console.log(error);
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="login-container">
+      <div className="login-card">
+        <h2>Certificate Admin Portal</h2>
+        <p className="subtitle">Secure Login Access</p>
 
-      <form onSubmit={handleOnSubmit}>
-        <input
-          type="text"
-          name="username"
-          value={form.username}
-          onChange={handleOnChange}
-          placeholder="Enter your Username"
-        />
+        <form onSubmit={handleOnSubmit}>
+          <div className="input-group">
+            <input
+              type="text"
+              name="username"
+              value={form.username}
+              onChange={handleOnChange}
+              required
+            />
+            <label>Username</label>
+          </div>
 
-        <input
-          type="password"
-          name="password"
-          value={form.password}
-          onChange={handleOnChange}
-          placeholder="Enter your password"
-        />
+          <div className="input-group">
+            <input
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={handleOnChange}
+              required
+            />
+            <label>Password</label>
+          </div>
 
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit" className="login-btn">
+            Login
+          </button>
+        </form>
+
+        <div className="student-link">
+          <Link to="/certificate">Student Verification →</Link>
+        </div>
+      </div>
     </div>
   );
 };
