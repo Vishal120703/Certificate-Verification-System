@@ -4,11 +4,18 @@ const {generateToken} = require("../utility/generateToken")
 const Certificate = require("../models/certificate.model")
 exports.createAdmin = async (req, res) => {
   try {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9]).{8,10}$/;
     const { username, name, email, password } = req.body;
 
     if (!username || !name || !email || !password) {
       return res.status(400).json({
         msg: "Please fill all required fields"
+      });
+    }
+    
+    if (!passwordRegex.test(password)) {
+      return res.status(400).json({
+        msg: "Password must be 8-10 characters long, include at least one uppercase letter, one number, and one special character"
       });
     }
 
