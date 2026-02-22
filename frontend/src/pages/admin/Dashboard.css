@@ -95,7 +95,37 @@
   animation: spin 1s linear infinite;
   margin-bottom: 15px;
 }
+.dashboard-card {
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
 
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Colored Left Borders */
+
+.dashboard-card.blue {
+  border-left: 6px solid #2563eb;
+}
+
+.dashboard-card.orange {
+  border-left: 6px solid #f97316;
+}
+
+.dashboard-card.purple {
+  border-left: 6px solid #7c3aed;
+}
+
+.dashboard-card.green {
+  border-left: 6px solid #16a34a;
+}
 @keyframes spin {
   100% {
     transform: rotate(360deg);

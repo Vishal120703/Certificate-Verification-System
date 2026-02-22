@@ -14,7 +14,9 @@ app.use(cors({origin: "http://localhost:5173",credentials: true}));
 
 const authRouter = require("./router/authRouter")
 const certificateRouter = require("./router/certificateRouter")
+const showRouter = require("./router/showRouter")
 app.use("/api/User",authRouter);
+app.use("/api/User",showRouter)
 app.use("/api/User/certificate",certificateRouter);
 
 

@@ -40,6 +40,27 @@ const Dashboard = () => {
       </div>
 
       <div className="card-grid">
+        {/* SUPER ADMIN - View All Admins */}
+{user.role === "super_admin" && (
+  <div
+    className="dashboard-card blue"
+    onClick={() => navigate("/all-admins")}
+  >
+    <h3>All Admins</h3>
+    <p>View and manage all admin accounts</p>
+  </div>
+)}
+
+{/* ADMIN + SUPER ADMIN - View All Certificates */}
+{["admin", "super_admin"].includes(user.role) && (
+  <div
+    className="dashboard-card orange"
+    onClick={() => navigate("/all-certificates")}
+  >
+    <h3>All Certificates</h3>
+    <p>View all generated certificates</p>
+  </div>
+)}
         {/* SUPER ADMIN */}
         {user.role === "super_admin" && (
           <div

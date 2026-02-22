@@ -7,6 +7,8 @@ import StudentCertificates from "../pages/student/StudentCertificate";
 import DownloadCertificate from "../pages/student/DownloadCertificate";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import UploadCertificates from "../pages/admin/UploadCertificates";
+import AllAdmins from "../pages/admin/AllAdmins";
+import AllCertificates from "../pages/admin/AllCertificates";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -17,6 +19,8 @@ const AppRoutes = () => {
       <Route path="/certificate/download/:id" element={<DownloadCertificate/>} />
       <Route path="/create-admin" element={<CreateAdmin />} />
       <Route path="/upload" element={<UploadCertificates />} />
+      <Route path="/all-admins" element={<AllAdmins />} />
+      <Route path="/all-certificates" element={<AllCertificates />} />
       <Route
         path="/dashboard"
         element={
