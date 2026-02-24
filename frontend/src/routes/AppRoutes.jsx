@@ -9,6 +9,7 @@ import CreateAdmin from "../pages/admin/CreateAdmin";
 import UploadCertificates from "../pages/admin/UploadCertificates";
 import AllAdmins from "../pages/admin/AllAdmins";
 import AllCertificates from "../pages/admin/AllCertificates";
+import VerifyCertificate from "../pages/admin/VerifyCertificate";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -21,6 +22,7 @@ const AppRoutes = () => {
       <Route path="/upload" element={<UploadCertificates />} />
       <Route path="/all-admins" element={<AllAdmins />} />
       <Route path="/all-certificates" element={<AllCertificates />} />
+      <Route path="/verify/:certificateId" element={<VerifyCertificate />} />
       <Route
         path="/dashboard"
         element={

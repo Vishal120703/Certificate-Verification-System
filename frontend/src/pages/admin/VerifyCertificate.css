@@ -1,0 +1,38 @@
+.verify-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f6f9;
+}
+
+.verify-card {
+  background: white;
+  padding: 30px;
+  width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.verify-card h2 {
+  margin-bottom: 20px;
+  color: #16a34a;
+}
+
+.certificate-info p {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.error-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.error-card h2 {
+  color: #dc2626;
+}

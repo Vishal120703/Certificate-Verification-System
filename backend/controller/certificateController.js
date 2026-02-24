@@ -28,20 +28,32 @@ catch{
 }
 }
 
-exports.verifyCertificate = async(req,res) =>{
-    try{
-        const {certificateId} = req.params;
-        const certificate = await Certificate.findOne({certificateId});
-        if(!certificate){
-            return res.status(404).json({msg:"not found",certificate})
-        }
-        return res.status(200).json({msg:"found"})
+exports.verifyCertificate = async (req, res) => {
+  try {
+    const { certificateId } = req.params;
 
+    const certificate = await Certificate.findOne({ certificateId });
+
+    if (!certificate) {
+      return res.status(404).json({
+        success: false,
+        msg: "Certificate not found"
+      });
     }
-    catch{
-        return res.status(500).json({msg:"Something went Wrong in verification."})
-    }
-}
+
+    return res.status(200).json({
+      success: true,
+      msg: "Certificate verified successfully",
+      data: certificate
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      msg: "Something went wrong in verification."
+    });
+  }
+};
 
 exports.uploadExcel = async (req, res) => {
   try {
